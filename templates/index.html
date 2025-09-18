@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weather Notifier</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+        .card { 
+            display: inline-block; 
+            padding: 20px; 
+            border-radius: 10px; 
+            background: #f5f5f5; 
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            width: 300px;
+        }
+        .temp { font-size: 2em; font-weight: bold; }
+        img { width: 80px; }
+    </style>
+</head>
+<body>
+    <h2>🌦 Weather Notifier</h2>
+    <form method="POST">
+        <input type="text" name="city" placeholder="Enter city" required>
+        <button type="submit">Get Weather</button>
+    </form>
+    <br><br>
+    
+    {% if weather %}
+    <div class="card">
+        <h3>{{ weather.city }}</h3>
+        <img src="http://openweathermap.org/img/wn/{{ weather.icon }}@2x.png" alt="icon">
+        <p class="temp">{{ weather.temp }}°C</p>
+        <p>Humidity: {{ weather.humidity }}%</p>
+        <p>{{ weather.desc.title() }}</p>
+    </div>
+    {% endif %}
+</body>
+</html>
